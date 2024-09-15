@@ -1,0 +1,37 @@
+ 1998  wget https://matt.ucc.asn.au/dropbear/releases/dropbear-2022.82.tar.bz2
+ 1999  tar -xjf dropbear-2022.82.tar.bz2
+ 2000  cd dropbear-2022.82
+ 2001  export CC=powerpc-linux-gnu-gcc
+ 2002  export CROSS_COMPILE=powerpc-linux-gnu-
+ 2003  ./configure --host=powerpc-linux --disable-zlib --enable-static
+ 2004  make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
+ 2005  cd ..
+ 2006  ls
+ 2007  wget https://github.com/besser82/libxcrypt/archive/refs/tags/v4.4.33.tar.gz
+ 2008  tar -xzf v4.4.33.tar.gz
+ 2009  cd libxcrypt-4.4.33/
+ 2010  ./configure --host=powerpc-linux --prefix=/opt/cross/ppc/libxcrypt
+ 2011  ls
+ 2012  export CROSS_COMPILE=powerpc-linux-gnu-
+ 2013  export CC=powerpc-linux-gnu-gcc
+ 2014  sudo apt-get install autoconf automake libtool
+ 2015  export CXX=powerpc-linux-gnu-g++
+ 2016  ./configure --host=powerpc-linux --prefix=/opt/cross/ppc/libxcrypt
+ 2017  ./autogen.sh 
+ 2018  ls
+ 2019  ./configure --host=powerpc-linux --prefix=/opt/cross/ppc/libxcrypt
+ 2020  make
+ 2021  make install
+ 2022  sudo make install
+ 2023  make
+ 2024  sudo make install
+ 2025  cd ..
+ 2026  cd dropbear-2022.82/
+ 2027  ./configure --host=powerpc-linux --disable-zlib --enable-static
+ 2028  ./configure --host=powerpc-linux --disable-zlib --enable-static --prefix=/opt/cross/ppc/libxcrypt
+ 2029  export CFLAGS="-I/opt/cross/ppc/libxcrypt/include"
+ 2030  export LDFLAGS="-L/opt/cross/ppc/libxcrypt/lib -lcrypt"
+ 2031  ./configure --host=powerpc-linux --disable-zlib --enable-static 
+ 2032  ./configure --host=powerpc-linux --disable-zlib --enable-static --with-crypt     --prefix=/opt/cross/ppc/dropbear
+ 2033  make PROGRAMS="dropbear dbclient dropbearkey dropbearconvert scp"
+
